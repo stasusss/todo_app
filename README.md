@@ -1,6 +1,6 @@
 ### Todo App
 
-[DEMO](https://stasusss.github.io/react_todo-app/)
+[DEMO](https://stasusss.github.io/todo-app/)
 
 ### Technologies
 
