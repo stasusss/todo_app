@@ -1,10 +1,10 @@
 {
   "name": "todo_app",
-  "homepage": ".",
+  "homepage": "https://stasusss.github.io/todo_app/",
   "version": "0.1.0",
   "private": true,
   "keywords": [],
-  "author": "StanislavS",
+  "author": "Stasusss",
   "license": "GPL-3.0",
   "dependencies": {
     "prop-types": "^15.7.2",

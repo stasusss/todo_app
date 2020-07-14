@@ -10,7 +10,7 @@ export const Main = props => (
       type="checkbox"
       onChange={props.isAllTodoToggle}
     />
-    <label htmlFor="toggle-all">All complete</label>
+    <label htmlFor="toggle-all">Mark all as complete</label>
     <TodoList
       {...props}
     />

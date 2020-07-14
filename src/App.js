@@ -22,11 +22,11 @@ class App extends React.Component {
 
   isAllTodoToggle = () => {
     this.setState((prevState) => {
-      if (prevState.todoList.some(todo => todo.isCompleted === false)) {
+      if (prevState.todoList.some(todo => todo.completed === false)) {
         const items = prevState.todoList.map((item) => {
           const currentItem = item;
 
-          currentItem.isCompleted = true;
+          currentItem.completed = true;
 
           return currentItem;
         });
@@ -40,7 +40,7 @@ class App extends React.Component {
       const items = prevState.todoList.map((item) => {
         const currentItem = item;
 
-        currentItem.isCompleted = false;
+        currentItem.completed = false;
 
         return currentItem;
       });
