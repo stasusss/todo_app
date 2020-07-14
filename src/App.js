@@ -1,26 +1,82 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Header } from './components/Header/Header';
+import { Main } from './components/Main/Main';
+import { Footer } from './components/Footer/Footer';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    todoList: [],
+    todoListCopy: [],
+  }
+
+  addTodo = (todo) => {
+    if (!todo.title.length) {
+      return;
+    }
+
+    this.setState(prevState => ({
+      todoList: [...prevState.todoList, todo],
+      todoListCopy: [...prevState.todoListCopy, todo],
+    }));
+  }
+
+  isAllTodoToggle = () => {
+    this.setState((prevState) => {
+      if (prevState.todoList.some(todo => todo.isCompleted === false)) {
+        const items = prevState.todoList.map((item) => {
+          const currentItem = item;
+
+          currentItem.isCompleted = true;
+
+          return currentItem;
+        });
+
+        return {
+          todoList: items,
+          todoListCopy: items,
+        };
+      }
+
+      const items = prevState.todoList.map((item) => {
+        const currentItem = item;
+
+        currentItem.isCompleted = false;
+
+        return currentItem;
+      });
+
+      return {
+        todoList: items,
+        todoListCopy: items,
+      };
+    });
+  }
+
+  getTodos = (todos, todosCopy) => {
+    this.setState({
+      todoListCopy: todosCopy,
+      todoList: todos,
+    });
+  }
+
+  render() {
+    return (
+      <section className="todoapp">
+        <Header addTodo={this.addTodo} />
+        <Main
+          todoList={this.state.todoList}
+          todoListCopy={this.state.todoListCopy}
+          isAllTodoToggle={this.isAllTodoToggle}
+          getTodos={this.getTodos}
+        />
+        <Footer
+          todoList={this.state.todoList}
+          todoListCopy={this.state.todoListCopy}
+          getTodos={this.getTodos}
+        />
+      </section>
+    );
+  }
 }
 
 export default App;
