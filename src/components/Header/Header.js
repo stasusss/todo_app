@@ -9,7 +9,7 @@ export class Header extends Component {
 
   handleChange = (event) => {
     this.setState({
-      input: event.target.value.replace(/[^\w\s]|^\s+$/g, ''),
+      input: event.target.value.replace(/[^\wА-Яа-я\s]|^\s+$/g, ''),
     });
   }
 
